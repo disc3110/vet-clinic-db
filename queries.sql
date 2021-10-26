@@ -1,6 +1,6 @@
 SELECT *
  FROM animals
- WHERE name ~ '[A-Za-z]+mon';
+ WHERE name LIKE '%mon';
 
 SELECT name
  FROM animals
@@ -24,7 +24,7 @@ SELECT name
 
  SELECT *
  FROM animals
- WHERE neutered;
+ WHERE neutered = TRUE;
 
  SELECT *
  FROM animals
