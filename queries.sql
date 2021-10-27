@@ -39,19 +39,21 @@ SELECT name
  /* update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that species columns went back to the state before tranasction. */
   BEGIN;
   UPDATE animals SET species = 'unspecified';
+  SELECT species from animals
   ROLLBACK;
-  SELECT * FROM animals;
+  SELECT species from animals
 
   /* Update the animals table by setting the species column to digimon for all animals that have a name ending in mon or pokemon the others */
   BEGIN;
   UPDATE animals
   SET species = 'digimon'
-  WHERE name ~'[A-Za-z]mon';
+  WHERE name LIKE '%mon';
 
   UPDATE animals
   SET species = 'pokemon'
   WHERE species IS NULL;
   COMMIT;
+  SELECT species from animals
 
   /* delete all records in the animals table, then roll back the transaction */
   BEGIN;
